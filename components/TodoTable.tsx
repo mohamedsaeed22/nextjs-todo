@@ -12,7 +12,7 @@ import { ITodo } from "@/interfaces";
 import { Badge } from "./ui/badge";
 import TodoTableAction from "./TodoTableAction";
 
-export default function TodoTable({ todos }: { todos: ITodo[] }) {
+export default function TodoTable({ data }: { data: ITodo[] }) {
   return (
     <Table>
       <TableCaption>A list of your tasks.</TableCaption>
@@ -26,8 +26,8 @@ export default function TodoTable({ todos }: { todos: ITodo[] }) {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {todos.length > 0 &&
-          todos.map((todo: ITodo, index: number) => (
+        {data.length > 0 &&
+          data.map((todo: ITodo, index: number) => (
             <TableRow key={index}>
               <TableCell className="font-medium">{todo?.id}</TableCell>
               <TableCell>{todo?.title}</TableCell>
@@ -49,7 +49,7 @@ export default function TodoTable({ todos }: { todos: ITodo[] }) {
         <TableRow>
           <TableCell colSpan={4}>Total</TableCell>
           <TableCell className="text-right">
-            {todos.length > 0 ? todos.length : 0}
+            {data.length > 0 ? data.length : 0}
           </TableCell>
         </TableRow>
       </TableFooter>

@@ -1,5 +1,5 @@
 "use client";
-import { Pen, Trash } from "lucide-react";
+import {  Trash } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState } from "react";
 import { deleteTodoAction } from "@/actions/todoActions";

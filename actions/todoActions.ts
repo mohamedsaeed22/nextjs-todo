@@ -1,16 +1,14 @@
 "use server";
 
 import { ITodo } from "@/interfaces";
-import { TodoFormValues } from "@/validation";
 import { PrismaClient } from "@prisma/client";
 import { revalidatePath } from "next/cache";
-import { string } from "zod";
 
 const prisma = new PrismaClient();
 
 export const getTodoAction = async ({ userId }: { userId: string | null }) => {
   try {
-    const todos = await prisma.todo.findMany({
+    const data = await prisma.todo.findMany({
       where: {
         user_id: userId as string,
       },
@@ -18,9 +16,9 @@ export const getTodoAction = async ({ userId }: { userId: string | null }) => {
         createdAt: "desc",
       },
     });
-    return todos;
+    return data;
   } catch (error) {
-    console.error("Error fetching todos:", error);
+    console.error("Error fetching data:", error);
     throw error;
   } finally {
     await prisma.$disconnect();

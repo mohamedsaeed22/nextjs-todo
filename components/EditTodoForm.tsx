@@ -19,12 +19,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Pen, Plus } from "lucide-react";
+import { Pen } from "lucide-react";
 import { Button } from "./ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { TodoFormValues, todoFormSchema } from "@/validation";
-import { createTodoAction, updateTodoAction } from "@/actions/todoActions";
+import { updateTodoAction } from "@/actions/todoActions";
 import { ITodo } from "@/interfaces";
 
 const EditTodoForm = ({ todo }: { todo: ITodo }) => {
@@ -44,8 +44,10 @@ const EditTodoForm = ({ todo }: { todo: ITodo }) => {
   });
 
   const onSubmit = async (data: TodoFormValues) => {
-    const updatedTodo = { ...data, id: todo.id };
-    console.log(updatedTodo);
+    const updatedTodo: ITodo = {
+      ...todo,
+      ...data,
+    };
     setLoading(true);
     await updateTodoAction(updatedTodo);
     setLoading(false);
@@ -63,7 +65,7 @@ const EditTodoForm = ({ todo }: { todo: ITodo }) => {
         <DialogHeader>
           <DialogTitle>Edit profile</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save when you're done.
+            Make changes to your profile here.
           </DialogDescription>
         </DialogHeader>
         <div className="py-4">

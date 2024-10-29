@@ -58,7 +58,7 @@ const AddTodoForm = ({ userId }: { userId: string | null }) => {
         <DialogHeader>
           <DialogTitle>Edit profile</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save when you're done.
+            Make changes to your profile here.
           </DialogDescription>
         </DialogHeader>
         <div className="py-4">
