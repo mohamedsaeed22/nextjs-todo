@@ -28,7 +28,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <Nav />
-            <div className="container mx-auto text-center">{children}</div>
+            <div className="container mx-auto flex justify-center items-center">{children}</div>
           </ThemeProvider>
         </body>
       </html>
